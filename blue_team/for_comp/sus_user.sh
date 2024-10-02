@@ -1,15 +1,15 @@
 #!/bin/bash
 
-# Blue Team - Network Service Monitoring and Alert
+# Blue Team - User Session Termination Script
 
-SUSPICIOUS_PORTS=(21 22 23 445 3389)
-LOG_FILE="/var/log/network_monitor.log"
-ALERT_EMAIL="admin@example.com"
+SUSPICIOUS_USERS=("hacker" "testuser")
+LOG_FILE="/var/log/suspicious_user_termination.log"
 
-echo "[+] Monitoring network services..."
-for port in "${SUSPICIOUS_PORTS[@]}"; do
-    if netstat -tuln | grep ":$port " > /dev/null; then
-        echo "[ALERT] Suspicious port $port open on $(hostname)" >> $LOG_FILE
-        mail -s "Suspicious Port Opened" $ALERT_EMAIL < $LOG_FILE
+echo "[+] Checking for suspicious users..."
+for user in "${SUSPICIOUS_USERS[@]}"; do
+    if who | grep $user > /dev/null; then
+        pts=$(who | grep $user | awk '{print $2}')
+        echo "[+] Terminating session for $user on pts/$pts" >> $LOG_FILE
+        pkill -9 -t $pts
     fi
 done

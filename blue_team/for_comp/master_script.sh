@@ -19,6 +19,10 @@ echo "[+] Starting all defensive scripts..."
 # Run suspicious user detection and termination script
 ./sus_user.sh &> $LOG_DIR/sus_user.log &
 
+# Run advanced defense scripts
+./kernel_defense.sh &> $LOG_DIR/kernel_defense.log &
+./varying_protection.sh &> $LOG_DIR/varying_protection.log &
+
 # Wait for all scripts to complete
 wait
 

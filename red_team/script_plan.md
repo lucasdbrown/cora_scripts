@@ -17,6 +17,10 @@ Use Case: Could modify this to inspect packets for specific keywords or inject m
 # firmware_injection.sh description
 This method writes a backdoor directly to the firmware of a network interface card (NIC) or hard drive, allowing the attacker to maintain access even if the operating system is reinstalled. Firmware-level persistence is extremely hard to detect and remove without specialized tools.
 
+## multi_port_infiltration.sh description
+Here is an advanced Red Team script that uses multiple port infiltration by setting up backdoors on 20+ ports, escalates privileges on each port, and floods the system with multiple cron jobs. It manipulates system services, creates persistent cron jobs, adds backdoor users, and performs other disruptive actions like log manipulation, creating fake files and folders, and interfering with system directories.
+Creates 200 random directories as well.
+
 ## Running `reverse_shell.c`
 check if gcc is installed
 `gcc --version`

@@ -42,13 +42,13 @@ if grep -q "pam_exec.so" "$PAM_FILE"; then
     systemctl restart sshd
 fi
 
-# Step 5: Check for kernel rootkits
-echo "[*] Scanning for kernel rootkits..." >> $LOG_FILE
-if lsmod | grep -E 'rootkit|netfilter' &>/dev/null; then
-    echo "[!] Kernel rootkit detected. Removing malicious module..." >> $LOG_FILE
-    rmmod rootkit
-    rmmod netfilter
-fi
+# # Step 5: Check for kernel rootkits
+# echo "[*] Scanning for kernel rootkits..." >> $LOG_FILE
+# if lsmod | grep -E 'rootkit|netfilter' &>/dev/null; then
+#     echo "[!] Kernel rootkit detected. Removing malicious module..." >> $LOG_FILE
+#     rmmod rootkit
+#     rmmod netfilter
+# fi
 
 # Step 6: Validate system binaries (e.g., ls, ps) for tampering
 echo "[*] Validating system binaries for tampering..." >> $LOG_FILE
